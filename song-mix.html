@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Mix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-left">
+                <a href="mood-mix.html" class="nav-link">
+                    <img src="images/mood.png" alt="Mood Icon" class="icon"> Mood Mix
+                </a>
+                <a href="song-mix.html" class="nav-link">
+                    <img src="images/music.png" alt="Song Icon" class="icon"> Song Mix
+                </a>
+                <a href="artist-mix.html" class="nav-link">
+                    <img src="images/mic.png" alt="Artist Icon" class="icon"> Artist Mix
+                </a>
+            </div>
+            <div class="header-right">
+                <!-- Add Home button here that links to the landing page -->
+                <a href="index.html" class="home-btn">Home</a>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main>
+            <h1 class="title">Song Mix</h1>
+            <p class="description">Create a mix of songs based on your favorite genres and artists.</p>
+
+            <!-- Input and Button Section -->
+            <div class="input-section">
+                <input type="text" placeholder="Type here..." maxlength="100" class="input-box">
+                <button class="generate-btn">Generate</button>
+                <span class="char-count">0/100</span>
+            </div>
+
+            <!-- Genre Section -->
+            <div class="genres-section">
+                <h2>Genres</h2>
+                <ul class="genre-list">
+                    <li>Pop</li>
+                    <li>Rap</li>
+                    <li>R&B</li>
+                </ul>
+            </div>
+
+            <!-- Suggested Topics Section -->
+            <div class="suggested-topics">
+                <button class="suggested-btn">Suggested topic</button>
+                <button class="suggested-btn">Suggested topic</button>
+                <button class="suggested-btn">Suggested topic</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
