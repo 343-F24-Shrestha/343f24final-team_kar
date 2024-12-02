@@ -5,51 +5,48 @@ const mockPlaylists = {
     'Adele': ['Hello', 'Rolling in the Deep', 'Someone Like You']
 };
 
-// Event listener to track character count in the input box
-document.addEventListener("input", (event) => {
-    if (event.target.classList.contains("input-box")) {
-        const charCountSpan = event.target.nextElementSibling; // Find the span for char count
-        charCountSpan.textContent = `${event.target.value.length}/100`;
-    }
-});
+// Event listener for the Generate button click
+document.addEventListener("DOMContentLoaded", () => {
+    // Add event listener to the Generate buttons in all forms
+    document.querySelectorAll(".generate-btn").forEach(button => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent form submission
 
-// Event listener for the "Generate" button to create a new playlist
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("generate-btn")) {
-        const inputBox = event.target.previousElementSibling; // Get the input box
-        const userInput = inputBox.value.trim();
+            // Get the input box and the user input for each respective form
+            const inputBox = button.previousElementSibling; 
+            const userInput = inputBox.value.trim();
 
-        if (userInput.length > 0) {
-            // Create a new playlist item
-            const playlistSection = document.querySelector(".suggested-topics");
-            const newPlaylist = document.createElement("button");
-            newPlaylist.classList.add("suggested-btn");
-            newPlaylist.textContent = `Playlist: ${userInput}`;
-            playlistSection.appendChild(newPlaylist);
+            if (userInput.length > 0) {
+                // Generate random songs for the entered artist or mood
+                if (mockPlaylists[userInput]) {
+                    const songs = mockPlaylists[userInput];
+                    displayPlaylist(songs, userInput);
+                } else {
+                    displayNoPlaylistFound(userInput);
+                }
 
-            // Generate random songs for the entered artist
-            if (mockPlaylists[userInput]) {
-                const songs = mockPlaylists[userInput];
-                displayPlaylist(songs, userInput);
+                // Clear the input box
+                inputBox.value = "";
+                const charCountSpan = button.nextElementSibling;
+                if (charCountSpan) {
+                    charCountSpan.textContent = "0/100";
+                }
             } else {
-                alert(`No playlist found for ${userInput}. Try another artist.`);
+                alert("Please type something to create a playlist.");
             }
+        });
+    });
 
-            // Clear the input box
-            inputBox.value = "";
-            const charCountSpan = event.target.nextElementSibling;
-            charCountSpan.textContent = "0/100";
-        } else {
-            alert("Please type something to create a playlist.");
-        }
-    }
+    // Event listener to track character count in all input boxes
+    document.querySelectorAll(".input-box").forEach(input => {
+        input.addEventListener("input", () => {
+            const charCountSpan = input.nextElementSibling; // Find the span for char count
+            if (charCountSpan) {
+                charCountSpan.textContent = `${input.value.length}/100`;
+            }
+        });
+    });
 });
-
-// Helper function to get random songs from an array
-function getRandomSongs(songs, count) {
-    const shuffled = songs.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-}
 
 // Function to display a playlist in the results section
 function displayPlaylist(songs, artist) {
@@ -60,7 +57,7 @@ function displayPlaylist(songs, artist) {
     playlistResults.style.display = 'block';
 
     // Display each song with a play button
-    songs.forEach((song, index) => {
+    songs.forEach((song) => {
         const li = document.createElement('li');
         li.innerHTML = `
             ${song}
@@ -68,6 +65,21 @@ function displayPlaylist(songs, artist) {
         `;
         playlistList.appendChild(li);
     });
+}
+
+// Function to display a message when no playlist is found for the artist
+function displayNoPlaylistFound(artist) {
+    const playlistList = document.getElementById('playlist-list');
+    playlistList.innerHTML = ''; // Clear existing playlist
+
+    const li = document.createElement('li');
+    li.classList.add("playlist-item");
+    li.textContent = `No playlist found for "${artist}". Try another artist.`;
+    playlistList.appendChild(li);
+
+    // Show the playlist results section
+    const playlistResults = document.getElementById('playlist-results');
+    playlistResults.style.display = 'block';
 }
 
 // Event listener for play buttons in the playlist
