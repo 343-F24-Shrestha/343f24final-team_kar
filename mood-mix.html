@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Mix</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -23,7 +23,6 @@
                 </a>
             </div>
             <div class="header-right">
-                <!-- Home button here that links to the landing page -->
                 <a href="index.html" class="home-btn">Home</a>
             </div>
         </header>
@@ -35,26 +34,25 @@
 
             <!-- Input and Button Section -->
             <form class="input-section">
-                <input type="text" placeholder="Type here..." maxlength="100" class="input-box">
-                <button class="generate-btn">Generate</button>
-                <span class="char-count">0/100</span>
+                <input id="mood-input" type="text" placeholder="Enter your mood..." maxlength="100" class="input-box">
+                <button id="generate-btn" class="generate-btn">Generate</button>
+                <span id="char-count" class="char-count">0/100</span>
             </form>
 
             <!-- Genre Section -->
             <div class="genres-section">
                 <h2>Genres</h2>
                 <ul class="genre-list">
-                    <li>Pop</li>
-                    <li>Rap</li>
-                    <li>R&B</li>
+                    <li><button class="genre-btn" data-genre="Pop">Pop</button></li>
+                    <li><button class="genre-btn" data-genre="Rap">Rap</button></li>
+                    <li><button class="genre-btn" data-genre="R&B">R&B</button></li>
                 </ul>
             </div>
 
-            <!-- Suggested Topics Section -->
-            <div class="suggested-topics">
-                <button class="suggested-btn">Suggested topic</button>
-                <button class="suggested-btn">Suggested topic</button>
-                <button class="suggested-btn">Suggested topic</button>
+            <!-- Playlist Results Section -->
+            <div id="playlist-results" class="playlist-results">
+                <h2>Playlist Results</h2>
+                <ul id="playlist-list"></ul>
             </div>
         </main>
     </div>
