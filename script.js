@@ -19,6 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const playlistList = document.getElementById("playlist-list");
     const spotifyPlayerContainer = document.getElementById("spotify-player-container");
     
+    // Add navigation link handlers here
+    const navLinks = document.querySelectorAll('.nav-link');
+    const clearButton = document.getElementById("clear-btn");
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (clearButton) {
+                clearButton.click();
+            }
+        });
+    });
+
     if (form) {
         // Load playlist from localStorage if available
         const storedPlaylist = localStorage.getItem("playlist");
@@ -195,3 +207,5 @@ function displayNoPlaylistFound(mood) {
     const playlistList = document.getElementById('playlist-list');
     playlistList.innerHTML = `<li>No playlist found for mood "${mood}". Try another mood.</li>`;
 }
+
+
