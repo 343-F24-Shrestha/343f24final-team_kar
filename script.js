@@ -89,16 +89,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Function to load a Giphy GIF as background
+// Function to load a Giphy GIF as background with a music theme
 async function loadGiphyBackground() {
+    const musicTags = ["music", "concert", "dj", "musician", "guitar", "piano", "rock music", "pop music"];
+    const randomTag = musicTags[Math.floor(Math.random() * musicTags.length)];
+
     try {
-        const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${giphyApiKey}&tag=music&rating=g`);
+        const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${giphyApiKey}&tag=${randomTag}&rating=g`);
         const data = await response.json();
         if (data.data && data.data.images) {
             const gifUrl = data.data.images.original.url;
 
-            // Set GIF as the background image of the body
+            // Set the GIF as the background image of the body
             document.body.style.backgroundImage = `url('${gifUrl}')`;
+            document.body.style.backgroundSize = 'cover'; // Ensure the background covers the entire body
+            document.body.style.backgroundRepeat = 'no-repeat'; // No repeat for better display
         }
     } catch (error) {
         console.error('Error fetching Giphy image:', error);
