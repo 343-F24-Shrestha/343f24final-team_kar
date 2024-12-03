@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const moodInput = document.getElementById("mood-input");
     const charCount = document.getElementById("char-count");
     const playlistList = document.getElementById("playlist-list");
+    const spotifyPlayerContainer = document.getElementById("spotify-player-container");
     
     if (form) {
         // Load playlist from localStorage if available
@@ -72,20 +73,20 @@ document.addEventListener("DOMContentLoaded", () => {
             URL.revokeObjectURL(url);
         });
 
-        // Clear localStorage and playlist data
+        // Clear localStorage, playlist data, and embedded Spotify player
         document.getElementById("clear-btn").addEventListener("click", () => {
+            // Clear playlist data from localStorage
             localStorage.removeItem("playlist");
+
+            // Clear the playlist list from the DOM
             playlistList.innerHTML = '';
+
+            // Clear the embedded Spotify player
+            if (spotifyPlayerContainer) {
+                spotifyPlayerContainer.innerHTML = '';
+            }
         });
     }
-
-    // Remove the Spotify player when the user navigates away from the page
-    window.addEventListener('beforeunload', () => {
-        const spotifyPlayerContainer = document.getElementById("spotify-player-container");
-        if (spotifyPlayerContainer) {
-            spotifyPlayerContainer.innerHTML = '';
-        }
-    });
 });
 
 // Function to load a Giphy GIF as background
