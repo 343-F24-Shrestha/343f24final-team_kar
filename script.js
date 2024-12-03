@@ -24,10 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearButton = document.getElementById("clear-btn");
     
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (clearButton) {
-                clearButton.click();
-            }
+        link.addEventListener('click', (event) => {
+            // Only clear if we're actually navigating (not if the click was prevented)
+            setTimeout(() => {
+                if (clearButton) {
+                    clearButton.click();
+                }
+            }, 0);
         });
     });
 
