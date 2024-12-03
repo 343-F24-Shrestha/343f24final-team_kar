@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Mix</title>
+    <title>Mood Mix</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -23,37 +23,36 @@
                 </a>
             </div>
             <div class="header-right">
-                <!-- Add Home button here that links to the landing page -->
                 <a href="index.html" class="home-btn">Home</a>
             </div>
         </header>
 
         <!-- Main Content Section -->
         <main>
-            <h1 class="title">Artist Mix</h1>
-            <p class="description">Create a mix of songs from your favorite artists and discover new ones.</p>
+            <h1 class="title">Artist mix</h1>
+            <p class="description">Generate a playlist based on an artist</p>
 
-           <!-- Input and Button Section -->
-            <form class="input-section">
-                <input type="text" placeholder="Enter Song..." maxlength="100" class="input-box">
-                <button type="submit" class="generate-btn">Generate</button>
-                <span class="char-count">0/100</span>
+            <!-- Input and Button Section -->
+            <form class="input-section" id="mood-form">
+                <label for="mood-input" class="visually-hidden">Enter an artist</label>
+                <input id="mood-input" type="text" placeholder="Enter an artist" maxlength="100" class="input-box">
+                <button type="submit" id="generate-btn" class="generate-btn">Generate</button>
+                <span id="char-count" class="char-count">0/100</span>
             </form>
-
-            <!-- Genre Section -->
-            <div class="genres-section">
-                <h2>Genres</h2>
-                <ul class="genre-list">
-                    <li><button type="button" class="genre-btn" data-genre="Pop">Pop</button></li>
-                    <li><button type="button" class="genre-btn" data-genre="Rap">Rap</button></li>
-                    <li><button type="button" class="genre-btn" data-genre="RandB">R&amp;B</button></li>
-                </ul>
-            </div>
 
             <!-- Playlist Results Section -->
             <div id="playlist-results" class="playlist-results">
                 <h2>Playlist Results</h2>
                 <ul id="playlist-list"></ul>
+            </div>
+
+             <!-- Spotify Player Section -->
+             <div id="spotify-player-container"></div>
+
+            <!-- Additional Controls Section -->
+            <div class="control-section">
+                <button type="button" id="export-btn" class="btn">Wanna download??</button>
+                <button type="button" id="clear-btn" class="btn">Clear</button>
             </div>
         </main>
     </div>

@@ -12,9 +12,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f5f5f5;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-size: cover;          /* Cover the entire background */
+            background-repeat: no-repeat;    /* No repeat for the background */
+            background-position: center;     /* Center the background */
         }
         
         .landing-container {
@@ -23,8 +25,9 @@
 
         .landing-container h1 {
             font-size: 48px;
-            color: #333;
+            color: #fff;
             margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
         }
 
         .start-btn {
@@ -36,19 +39,19 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Button shadow for better visibility */
         }
 
         .start-btn:hover {
             background-color: #45a049;
         }
     </style>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="landing-container">
         <h1>Welcome!!!</h1>
-        <!-- Big button that takes you to the main page -->
-        <a href="Main.html" class="start-btn">Start Generating</a>
+        <a href="mood-mix.html" class="start-btn">Start Generating</a>
     </div>
 </body>
 </html>

@@ -1,3 +1,5 @@
+<!-- Updated mood-mix.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,26 +35,26 @@
             <p class="description">Explore different moods and create a playlist based on your current feelings.</p>
 
             <!-- Input and Button Section -->
-            <form class="input-section">
+            <form class="input-section" id="mood-form">
+                <label for="mood-input" class="visually-hidden">Enter your mood</label>
                 <input id="mood-input" type="text" placeholder="Enter your mood..." maxlength="100" class="input-box">
                 <button type="submit" id="generate-btn" class="generate-btn">Generate</button>
                 <span id="char-count" class="char-count">0/100</span>
             </form>
 
-            <!-- Genre Section -->
-            <div class="genres-section">
-                <h2>Genres</h2>
-                <ul class="genre-list">
-                    <li><button type="button" class="genre-btn" data-genre="Pop">Pop</button></li>
-                    <li><button type="button" class="genre-btn" data-genre="Rap">Rap</button></li>
-                    <li><button type="button" class="genre-btn" data-genre="RandB">R&amp;B</button></li>
-                </ul>
-            </div>
-
             <!-- Playlist Results Section -->
             <div id="playlist-results" class="playlist-results">
                 <h2>Playlist Results</h2>
                 <ul id="playlist-list"></ul>
+            </div>
+
+            <!-- Spotify Player Section -->
+            <div id="spotify-player-container"></div>
+
+            <!-- Additional Controls Section -->
+            <div class="control-section">
+                <button id="export-btn" class="btn">Export Playlist as JSON</button>
+                <button id="clear-btn" class="btn">Clear Data</button>
             </div>
         </main>
     </div>
