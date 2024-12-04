@@ -291,3 +291,13 @@ header {
         padding: 8px 16px;
     }
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right {
+  margin-left: auto;
+  padding-right: 1rem;
+}
