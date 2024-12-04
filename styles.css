@@ -254,6 +254,13 @@ header {
     background-color: #45a049;
 }
 
+
+.spotify-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
 /* For screens 480px and below (mobile phones) */
 @media (max-width: 480px) {
     .title {
